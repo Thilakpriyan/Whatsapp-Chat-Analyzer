@@ -16,3 +16,8 @@ def fetch_stats(selected_user,df):
 
 
     return num_messages,len(words),media_message,len(links)
+
+
+def most_busy_users(df):
+    x=df['user'].value_counts().head()
+    return x
