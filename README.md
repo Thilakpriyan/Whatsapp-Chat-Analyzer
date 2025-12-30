@@ -154,11 +154,6 @@ Export analysis reports as PDF
 
 Support multiple chat files
 
-👤 Author
-
-Thilakpriyan R
-B.Tech / B.E – Computer Science
-Interested in Machine Learning & Data Analytics
 
 ⭐ Acknowledgements
 
