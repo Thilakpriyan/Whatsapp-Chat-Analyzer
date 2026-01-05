@@ -3,6 +3,7 @@ from wordcloud import WordCloud
 import pandas as pd
 from collections import Counter
 import re
+import emoji
 
 
 extract=URLExtract()
@@ -34,24 +35,47 @@ def most_busy_users(df):
     percent_df.columns = ['user', 'percent']
 
     return user_counts, percent_df
+def create_wordcloud(selected_user, df):
 
-def create_wordcloud(selected_user,df):
+    with open('stopwords.txt', 'r', encoding='utf-8') as f:
+        stop_words = set(f.read().split())
+
     if selected_user != 'Overall':
-        df=df[df['user']==selected_user]
-    wc= WordCloud(width=800, height=600,min_font_size=10,background_color='white')
-    df_wc=wc.generate(df['message'].str.cat(sep=''))
+        df = df[df['user'] == selected_user]
+
+    temp = df[df['user'] != 'group_notification']
+    temp = temp[temp['message'] != '<Media omitted>\n']
+
+    def remove_stopwords(message):
+        words = []
+        message = message.lower()
+        message = re.sub(r'[^\w\s]', '', message)
+
+        for word in message.split():
+            if word not in stop_words:
+                words.append(word)
+
+        return " ".join(words)
+
+    cleaned_text = temp['message'].apply(remove_stopwords).str.cat(sep=' ')
+
+    wc = WordCloud(
+        width=800,
+        height=600,
+        min_font_size=10,
+        background_color='white'
+    )
+
+    df_wc = wc.generate(cleaned_text)
+
     return df_wc
 import os
 print('STOPWORDS FILE PATH:',os.path.abspath('stopwords.txt'))
 def most_common_words(selected_user, df):
-    import re
-    from collections import Counter
-    import pandas as pd
 
     with open('stopwords.txt', 'r', encoding='utf-8') as f:
         stop_words = set(f.read().split())
-    print("STOPWORDS SAMPLE:", list(stop_words)[:20])
-    print("TOTAL STOPWORDS:", len(stop_words))
+
     if selected_user != 'Overall':
         df = df[df['user'] == selected_user]
 
@@ -75,3 +99,23 @@ def most_common_words(selected_user, df):
     )
 
     return most_common_df
+
+
+def emoji_helper(selected_user, df):
+
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    emojis = []
+
+    for message in df['message']:
+        for char in message:
+            if emoji.is_emoji(char):
+                emojis.append(char)
+
+    emoji_df = pd.DataFrame(
+        Counter(emojis).most_common(),
+        columns=['emoji', 'count']
+    )
+
+    return emoji_df

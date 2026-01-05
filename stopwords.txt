@@ -79,7 +79,6 @@ thaan
 dhaan
 mathiri
 madhiri
-
 a
 an
 the
@@ -135,10 +134,8 @@ could
 should
 may
 might
-
 ok
 hmm
-
 afternoon
 night
 today

@@ -63,6 +63,17 @@ if uploaded_file is not None:
     st.pyplot(fig)
 
     #mostcommon word
-    most_common_df=helper.most_common_words(selected_user, df)
+    most_common_df = helper.most_common_words(selected_user, df)
 
-    st.dataframe(most_common_df)
+    fig, ax = plt.subplots()
+
+    ax.bar(most_common_df['word'], most_common_df['count'])
+
+    plt.xticks(rotation=90)
+
+    st.pyplot(fig)
+
+    #Emoji Analysis
+
+    emoji_df=helper.emoji_helper(selected_user,df)
+    st.dataframe(emoji_df)
