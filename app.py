@@ -2,6 +2,8 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import helper
 import prepocessor
+from helper import most_common_words
+
 st.sidebar.title('WHATSAPP CHAT ANALYZER')
 
 
@@ -54,7 +56,13 @@ if uploaded_file is not None:
             with col2:
                 st.dataframe(new_df)
     #wordcloud
+    st.title('WordCloud')
     df_wc=helper.create_wordcloud(selected_user,df)
     fig,ax=plt.subplots()
     plt.imshow(df_wc)
     st.pyplot(fig)
+
+    #mostcommon word
+    most_common_df=helper.most_common_words(selected_user, df)
+
+    st.dataframe(most_common_df)
