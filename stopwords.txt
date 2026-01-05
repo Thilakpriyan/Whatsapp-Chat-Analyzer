@@ -129,6 +129,8 @@ has
 had
 will
 would
+ga
+mm
 can
 could
 should
@@ -154,6 +156,7 @@ when
 where
 all
 only
+punda
 just
 pls
 please

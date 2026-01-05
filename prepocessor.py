@@ -42,8 +42,9 @@ def prepocesses(data):
     df['message'] = msgs
 
     df.drop(columns=['user_message'], inplace=True)
-
+    df['only_date']=df['date'].dt.date
     df['Year'] = df['date'].dt.year
+    df['month_num']=df['date'].dt.month
     df['Month'] = df['date'].dt.month_name()
     df['Day'] = df['date'].dt.day
     df['Hour'] = df['date'].dt.hour
