@@ -1,164 +1,138 @@
-📊 WhatsApp Chat Analyzer (ML + Streamlit)
-🔍 Project Overview
+📊 WhatsApp Chat Analyzer
 
-The WhatsApp Chat Analyzer is a Machine Learning–powered data analysis application that analyzes one-to-one chats and group chats exported from WhatsApp.
-Users can upload a WhatsApp chat file (.txt), and the application provides insights, statistics, and visualizations about chat activity.
+A Streamlit-based data analysis application that analyzes WhatsApp one-to-one and group chats to extract meaningful insights using Python, NLP preprocessing, and data visualization techniques.
 
-The project is built using Python, Pandas, Streamlit, and Machine Learning techniques, developed in PyCharm, and deployed on Heroku.
+Users can upload an exported WhatsApp chat file (.txt) and instantly view interactive statistics, timelines, word clouds, and emoji usage patterns.
 
-🎯 Objectives
+🚀 Live Demo
+
+👉 Deployed on Streamlit Community Cloud
+🔗 https://whatsapp-chat-analyzer-cp5famyl3afzxa4ccj7dss.streamlit.app/
+
+🎯 Project Objectives
 
 Analyze WhatsApp chat data automatically
 
-Support individual chats and group chats
+Support individual and group chats
 
-Extract useful insights such as:
+Extract time-based and user-based insights
 
-Most active users
+Apply NLP preprocessing and exploratory data analysis
 
-Message frequency
+Build an end-to-end deployable analytics application
 
-Timeline analysis
+🧠 Key Features
 
-Word usage patterns
+📩 Total messages & word count
 
-Provide an easy-to-use web interface
+👥 Most active users (group chats)
 
-Deploy as a live web application
+📅 Monthly & daily chat timelines
 
-🧠 Features
+🗓️ Weekly activity analysis
 
-📁 Upload WhatsApp chat .txt file
+⏰ Hour-wise activity heatmap
 
-👤 Separate users and messages automatically
+☁️ WordCloud of most used words
 
-📅 Time-based analysis (daily, monthly activity)
+🔤 Most common words analysis
 
-💬 Message count per user
+😊 Emoji usage analysis
 
-📈 Visual charts and statistics
+🔗 Link sharing statistics
 
-🤖 Machine learning–ready preprocessing
+📊 Interactive visualizations
 
-🌐 Web app using Streamlit
+🛠️ Tech Stack
+Category	Tools
+Language	Python
+Data Processing	Pandas
+Visualization	Matplotlib, Seaborn
+UI Framework	Streamlit
+NLP Concepts	Regex, Stopwords, Tokenization
+Emoji Processing	emoji
+URL Extraction	urlextract
+Deployment	Streamlit Community Cloud
+IDE	PyCharm
 
-🛠️ Technologies Used
-Programming & Libraries
-
-Python 3
-
-Pandas
-
-NumPy
-
-Regex (re)
-
-Streamlit
-
-Matplotlib / Seaborn (for visualization)
-
-Tools & Platforms
-
-PyCharm (Development)
-
-Git & GitHub (Version Control)
-
-Streamlit (Web Interface)
-
-Heroku (Deployment)
-
-🧩 Project Structure
-Whatsapp-chat-analyzer/
+📂 Project Structure
+whatsapp-chat-analyzer/
 │
-├── app.py               # Main Streamlit application
-├── preprocessor.py      # Chat preprocessing and ML logic
-├── requirements.txt     # Required Python libraries
-├── .gitignore           # Ignored files for Git
-├── README.md            # Project documentation
+├── app.py                # Streamlit UI and app logic
+├── helper.py             # Analysis and visualization functions
+├── prepocessor.py        # Chat preprocessing & feature engineering
+├── stopwords.txt         # Stopwords for NLP cleaning
+├── requirements.txt      # Project dependencies
+└── README.md
+
+⚙️ How the System Works
+1️⃣ Chat Preprocessing
+
+Parses raw WhatsApp chat text
+
+Extracts:
+
+Date & time
+
+User names
+
+Message content
+
+Performs feature engineering:
+
+Year, month, day
+
+Day name
+
+Hour & time period slots
+
+2️⃣ Data Analysis
+
+Message statistics
+
+User activity counts
+
+Time-based grouping
+
+Text cleaning & stopword removal
+
+3️⃣ Visualization
+
+Line charts (daily & monthly trends)
+
+Bar charts (user & word frequency)
+
+Heatmaps (weekly & hourly activity)
+
+WordClouds
+
+Emoji pie charts
+
+4️⃣ Deployment
+
+Hosted on Streamlit Community Cloud
+
+Accessible via browser
+
+No local setup required
 
 📥 Input Format
 
-WhatsApp chat exported as .txt file
+Export WhatsApp chat as .txt file
 
-Supports:
+Supported:
 
-Personal chats
+One-to-one chats
 
 Group chats
 
-Language-independent (works with emojis & Unicode)
-
-📤 Output / Analysis Provided
-
-Total messages count
-
-User-wise message contribution
-
-Chat activity over time
-
-Identification of group notifications
-
-Cleaned and structured DataFrame for ML tasks
-
-🚀 How to Run the Project Locally
-1️⃣ Clone the Repository
-git clone https://github.com/<your-username>/Whatsapp-chat-analyzer.git
-cd Whatsapp-chat-analyzer
-
-2️⃣ Create Virtual Environment
-python -m venv .venv
-.venv\Scripts\activate
-
-3️⃣ Install Dependencies
+🧪 Local Setup (Optional)
+git clone https://github.com/your-username/whatsapp-chat-analyzer.git
+cd whatsapp-chat-analyzer
 pip install -r requirements.txt
-
-4️⃣ Run Streamlit App
 streamlit run app.py
 
+🧠 Is This a Machine Learning Project?
 
-Open browser:
+This project focuses on NLP preprocessing and exploratory data analysis, which are foundational components of machine learning pipelines.
 
-http://localhost:8501
-
-🌐 Deployment (Heroku)
-
-The application is deployed using Heroku
-
-Uses Procfile and requirements.txt
-
-GitHub repository is connected to Heroku for deployment
-
-🎓 Learning Outcomes
-
-Real-world data cleaning & preprocessing
-
-Regex-based text parsing
-
-Pandas DataFrame manipulation
-
-Streamlit web application development
-
-GitHub workflow
-
-Cloud deployment using Heroku
-
-🔮 Future Enhancements
-
-Emoji analysis
-
-Sentiment analysis using NLP
-
-Chat comparison between users
-
-Export analysis reports as PDF
-
-Support multiple chat files
-
-
-⭐ Acknowledgements
-
-WhatsApp chat export format
-
-Streamlit community
-
-Open-source Python ecosystem
