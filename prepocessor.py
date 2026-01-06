@@ -40,6 +40,7 @@ def prepocesses(data):
 
     df['user'] = users
     df['message'] = msgs
+    df['day_name'] = df['date'].dt.day_name()
 
     df.drop(columns=['user_message'], inplace=True)
     df['only_date']=df['date'].dt.date
@@ -49,5 +50,17 @@ def prepocesses(data):
     df['Day'] = df['date'].dt.day
     df['Hour'] = df['date'].dt.hour
     df['Minute'] = df['date'].dt.minute
+
+    period = []
+
+    for hour in df['Hour']:
+        if hour == 23:
+            period.append('23-00')
+        elif hour == 0:
+            period.append('00-01')
+        else:
+            period.append(f'{hour:02d}-{hour + 1:02d}')
+
+    df['period'] = period
 
     return df

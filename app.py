@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import helper
 import prepocessor
 from helper import most_common_words
+import seaborn as sns
 
 st.sidebar.title('WHATSAPP CHAT ANALYZER')
 
@@ -65,8 +66,30 @@ if uploaded_file is not None:
         st.pyplot(fig)
 
 
+        #activity Map
+        st.title('ActivityMap')
+        col1,col2=st.columns(2)
+        with col1:
+            st.header('Most Busy Day')
+            busy_day=helper.week_activity(selected_user,df)
+            fig,ax=plt.subplots()
+            ax.bar(busy_day.index,busy_day.values,color='red')
+            plt.xticks(rotation=90)
+            st.pyplot(fig)
+        with col2:
+            st.header('Most Busy Month')
+            busy_month=helper.month_activity(selected_user,df)
+            fig,ax=plt.subplots()
+            ax.bar(busy_month.index,busy_month.values,color='orange')
+            plt.xticks(rotation=90)
+            st.pyplot(fig)
 
+        st.title('Weekly Activity')
 
+        user_heatmap=helper.activity_heatmap(selected_user,df)
+        fig,ax=plt.subplots()
+        ax=sns.heatmap(user_heatmap)
+        st.pyplot(fig)
         #finding the busiest user in the group
         if selected_user =='Overall':
             st.title('MOST BUSY USER')
